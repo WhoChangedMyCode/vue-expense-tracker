@@ -5,7 +5,7 @@ import vue from "@vitejs/plugin-vue";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    bases: "/vue-expense-tracker/",
+    bases: "./",
     plugins: [vue()],
     resolve: {
         alias: {
