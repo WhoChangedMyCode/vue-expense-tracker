@@ -30,6 +30,7 @@ const onSubmit = () => {
 
 <template>
     <h3>添加交易記錄</h3>
+    <!-- @submit.prevent 是一種事件修飾符，它可以用來阻止默認行為。在本例中，默認行為是刷新頁面 -->
     <form id="form" @submit.prevent="onSubmit">
         <div class="form-control">
             <!-- 官方仍建議你顯式地為 input 元素設定 id 相匹配的標簽，以更好地實現無障礙訪問。 -->

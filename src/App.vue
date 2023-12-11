@@ -11,6 +11,7 @@
 import { ref, computed, onMounted } from "vue";
 // 導入通知庫
 import { useToast } from "vue-toastification";
+// A library for generating universally unique identifiers (UUIDs).
 import { v4 as uuid } from "uuid";
 
 /**
@@ -23,6 +24,7 @@ import { v4 as uuid } from "uuid";
  * 在使用 Vue.prototype.component() 方法註冊組件時。
  */
 // import Header from "./components/HeaderComp.vue";
+// 對於組件名，官方推薦使用PascalCase https://cn.vuejs.org/guide/components/props.html
 import Header from "@/components/HeaderComp.vue";
 import Balance from "@/components/BalanceComp.vue";
 import IncomeExpense from "@/components/IncomeExpensesComp.vue";
@@ -71,7 +73,7 @@ const expenses = computed(() => {
         .toFixed(2);
 });
 
-// Add transaction
+// 添加賬單記錄
 const handleTransactionSubmitted = (transactionData) => {
     transactions.value.push({
         id: generateUniqueId(),
@@ -87,7 +89,7 @@ const generateUniqueId = () => {
     return generateUuid;
 };
 
-// Deleted transaction
+// 刪除交易記錄
 const handleTransactionDeleted = (transactionId) => {
     transactions.value = transactions.value.filter((transaction) => {
         return transaction.id !== transactionId;
