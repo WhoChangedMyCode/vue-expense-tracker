@@ -76,7 +76,7 @@ const handleTransactionSubmitted = (transactionData) => {
         amount: transactionData.amount,
     });
     savaTransactionsToLocalStorage();
-    toast.success("Transaction added");
+    toast.success("添加交易記錄成功");
 };
 
 // Generate unique ID
@@ -90,7 +90,7 @@ const handleTransactionDeleted = (transactionId) => {
         return transaction.id !== transactionId;
     });
     savaTransactionsToLocalStorage();
-    toast.success("Transaction deleted");
+    toast.success("刪除交易記錄成功");
 };
 
 // Sava to local storage

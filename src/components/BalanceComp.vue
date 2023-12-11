@@ -10,6 +10,6 @@ defineProps({
 </script>
 
 <template>
-    <h4>Your Balance</h4>
-    <h1 id="balance">$ {{ total }}</h1>
+    <h4>當前餘額</h4>
+    <h1 id="balance" :class="total>0?'plus':'minus'">￥{{ total }}</h1>
 </template>
