@@ -22,11 +22,11 @@ import { useToast } from "vue-toastification";
  * 在使用 Vue.prototype.component() 方法註冊組件時。
  */
 // import Header from "./components/HeaderComp.vue";
-import Header from "./components/HeaderComp.vue";
-import Balance from "./components/BalanceComp.vue";
-import IncomeExpense from "./components/IncomeExpensesComp.vue";
-import TransactionList from "./components/TransactionListComp.vue";
-import AddTransaction from "./components/AddTransactionComp.vue";
+import Header from "@/components/HeaderComp.vue";
+import Balance from "@/components/BalanceComp.vue";
+import IncomeExpense from "@/components/IncomeExpensesComp.vue";
+import TransactionList from "@/components/TransactionListComp.vue";
+import AddTransaction from "@/components/AddTransactionComp.vue";
 
 // 初始化useToast
 const toast = useToast();
