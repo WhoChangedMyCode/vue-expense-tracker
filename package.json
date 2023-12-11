@@ -14,9 +14,11 @@
     "vue-toastification": "^2.0.0-rc.5"
   },
   "devDependencies": {
+    "@types/uuid": "^9.0.7",
     "@vitejs/plugin-vue": "^4.5.1",
     "eslint": "^8.49.0",
     "eslint-plugin-vue": "^9.17.0",
+    "uuid": "^9.0.1",
     "vite": "^5.0.5"
   }
 }

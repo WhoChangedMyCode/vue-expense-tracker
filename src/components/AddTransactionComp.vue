@@ -42,7 +42,7 @@ const onSubmit = () => {
                 type="text"
                 id="text"
                 v-model="text"
-                placeholder="輸入描述..."
+                placeholder="輸入描述"
             />
         </div>
         <div class="form-control">
@@ -51,7 +51,7 @@ const onSubmit = () => {
                 type="text"
                 id="amount"
                 v-model="amount"
-                placeholder="輸入金額（負數：支出，正數：收入）..."
+                placeholder="輸入金額（負數：支出，正數：收入）"
             />
         </div>
         <button class="btn">添加</button>

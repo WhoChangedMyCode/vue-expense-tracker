@@ -11,6 +11,7 @@
 import { ref, computed, onMounted } from "vue";
 // 導入通知庫
 import { useToast } from "vue-toastification";
+import { v4 as uuid } from "uuid";
 
 /**
  * 在Vue3中，使用相對路徑和使用絕對路徑在性能上沒有明顯的差別。這主要是因為Vue3的編譯器會將相對路徑轉換為絕對路徑。
@@ -32,6 +33,8 @@ import AddTransaction from "@/components/AddTransactionComp.vue";
 const toast = useToast();
 const transactions = ref([]);
 
+const generateUuid = uuid();
+
 onMounted(() => {
     const savedTransactions = JSON.parse(localStorage.getItem("transactions"));
     if (savedTransactions) {
@@ -39,31 +42,31 @@ onMounted(() => {
     }
 });
 
-// Get total
+// 計算當前餘額
 const total = computed(() => {
     return transactions.value
-        .reduce((acc, transaction) => {
-            return acc + transaction.amount;
+        .reduce((accumulator, transaction) => {
+            return accumulator + transaction.amount;
         }, 0)
         .toFixed(2);
 });
 
-// Get income
+// 計算歷史收入
 const income = computed(() => {
     return transactions.value
         .filter((transaction) => transaction.amount > 0)
-        .reduce((acc, transaction) => {
-            return acc + transaction.amount;
+        .reduce((accumulator, transaction) => {
+            return accumulator + transaction.amount;
         }, 0)
         .toFixed(2);
 });
 
-// Get expenses
+// 計算歷史支出
 const expenses = computed(() => {
     return transactions.value
         .filter((transaction) => transaction.amount < 0)
-        .reduce((acc, transaction) => {
-            return acc + transaction.amount;
+        .reduce((accumulator, transaction) => {
+            return accumulator + transaction.amount;
         }, 0)
         .toFixed(2);
 });
@@ -79,9 +82,9 @@ const handleTransactionSubmitted = (transactionData) => {
     toast.success("添加交易記錄成功");
 };
 
-// Generate unique ID
+// 生成交易記錄的唯一Id
 const generateUniqueId = () => {
-    return Math.floor(Math.random() * 1000000);
+    return generateUuid;
 };
 
 // Deleted transaction
