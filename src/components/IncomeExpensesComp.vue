@@ -2,11 +2,11 @@
 defineProps({
     income: {
         type: Number,
-        require: true,
+        required: true,
     },
     expenses: {
         type: Number,
-        require: true,
+        required: true,
     },
 });
 </script>

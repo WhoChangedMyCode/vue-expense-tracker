@@ -39,21 +39,11 @@ const onSubmit = () => {
                 <input type="text" v-model="text" placeholder="Enter text..." />
             </label> -->
             <label for="text"></label>
-            <input
-                type="text"
-                id="text"
-                v-model="text"
-                placeholder="輸入描述"
-            />
+            <input type="text" id="text" v-model="text" placeholder="輸入描述" />
         </div>
         <div class="form-control">
             <label for="amount"></label>
-            <input
-                type="text"
-                id="amount"
-                v-model="amount"
-                placeholder="輸入金額（負數：支出，正數：收入）"
-            />
+            <input type="text" id="amount" v-model="amount" placeholder="輸入金額（負數：支出，正數：收入）" />
         </div>
         <button class="btn">添加</button>
     </form>

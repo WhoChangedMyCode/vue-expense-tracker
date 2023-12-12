@@ -16,20 +16,13 @@ const deleteTransaction = (transactionId) => {
 <template>
     <h3>交易記錄</h3>
     <ul id="list" class="list">
-        <li
-            v-for="transaction in transactions"
-            :key="transaction.id"
-            :class="transaction.amount < 0 ? 'minus' : 'plus'"
-        >
+        <li v-for="transaction in transactions" :key="transaction.id" :class="transaction.amount < 0 ? 'minus' : 'plus'">
             {{ transaction.text }}
-            <span v-if="transaction.amount > 0"
-                >￥+{{ transaction.amount }}</span
-            >
+            <span v-if="transaction.amount > 0">
+                ￥+{{ transaction.amount }}
+            </span>
             <span v-else>￥{{ transaction.amount }}</span>
-            <button
-                class="delete-btn"
-                @click="deleteTransaction(transaction.id)"
-            >
+            <button class="delete-btn" @click="deleteTransaction(transaction.id)">
                 X
             </button>
         </li>

@@ -5,9 +5,15 @@
 // import { defineProps } from "vue";
 
 defineProps({
+    // 如果一个 prop 的名字很长，应使用 camelCase 形式，
+    // 因为它们是合法的 JavaScript 标识符，可以直接在模板的表达式中使用，
+    // 也可以避免在作为属性 key 名时必须加上引号。
+    // https://cn.vuejs.org/guide/components/props.html
     total: {
         type: Number,
-        require: true,
+        // Prop校驗，必傳
+        // 所有 prop 默认都是可选的，除非声明了 required: true。
+        required: true,
     },
 });
 </script>

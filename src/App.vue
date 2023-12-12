@@ -81,7 +81,7 @@ const handleTransactionSubmitted = (transactionData) => {
         amount: transactionData.amount,
     });
     savaTransactionsToLocalStorage();
-    toast.success("添加交易記錄成功");
+    toast.success("添加成功");
 };
 
 // 生成交易記錄的唯一Id
@@ -95,7 +95,7 @@ const handleTransactionDeleted = (transactionId) => {
         return transaction.id !== transactionId;
     });
     savaTransactionsToLocalStorage();
-    toast.success("刪除交易記錄成功");
+    toast.success("刪除成功");
 };
 
 // Sava to local storage
@@ -110,11 +110,7 @@ const savaTransactionsToLocalStorage = () => {
         <Balance :total="+total" />
         <!-- +號確保是傳遞Number類型 -->
         <IncomeExpense :income="+income" :expenses="+expenses" />
-        <TransactionList
-            :transactions="transactions"
-            @transactionDeleted="handleTransactionDeleted"
-        />
-        <!-- 為甚麼不能寫() -->
+        <TransactionList :transactions="transactions" @transactionDeleted="handleTransactionDeleted" />
         <AddTransaction @transactionSubmitted="handleTransactionSubmitted" />
     </div>
 </template>
