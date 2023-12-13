@@ -8,11 +8,11 @@
 當然，這只是官方文檔的默認寫法，開發者可以根據自己的喜好和習慣來決定<script>和<template>的順序。
 -->
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue"
 // 導入通知庫
-import { useToast } from "vue-toastification";
+import { useToast } from "vue-toastification"
 // A library for generating universally unique identifiers (UUIDs).
-import { v4 as uuid } from "uuid";
+import { v4 as uuid } from "uuid"
 
 /**
  * 在Vue3中，使用相對路徑和使用絕對路徑在性能上沒有明顯的差別。這主要是因為Vue3的編譯器會將相對路徑轉換為絕對路徑。
@@ -25,22 +25,22 @@ import { v4 as uuid } from "uuid";
  */
 // import Header from "./components/HeaderComp.vue";
 // 對於組件名，官方推薦使用PascalCase https://cn.vuejs.org/guide/components/props.html
-import Header from "@/components/HeaderComp.vue";
-import Balance from "@/components/BalanceComp.vue";
-import IncomeExpense from "@/components/IncomeExpensesComp.vue";
-import TransactionList from "@/components/TransactionListComp.vue";
-import AddTransaction from "@/components/AddTransactionComp.vue";
+import Header from "@/components/HeaderComp.vue"
+import Balance from "@/components/BalanceComp.vue"
+import IncomeExpense from "@/components/IncomeExpensesComp.vue"
+import TransactionList from "@/components/TransactionListComp.vue"
+import AddTransaction from "@/components/AddTransactionComp.vue"
 
 // 初始化useToast
-const toast = useToast();
-const transactions = ref([]);
+const toast = useToast()
+const transactions = ref([])
 
-const generateUuid = uuid();
+const generateUuid = uuid()
 
 onMounted(() => {
-    const savedTransactions = JSON.parse(localStorage.getItem("transactions"));
+    const savedTransactions = JSON.parse(localStorage.getItem("transactions"))
     if (savedTransactions) {
-        transactions.value = savedTransactions;
+        transactions.value = savedTransactions
     }
 });
 
@@ -48,9 +48,9 @@ onMounted(() => {
 const total = computed(() => {
     return transactions.value
         .reduce((accumulator, transaction) => {
-            return accumulator + transaction.amount;
+            return accumulator + transaction.amount
         }, 0)
-        .toFixed(2);
+        .toFixed(2)
 });
 
 // 計算歷史收入
@@ -58,9 +58,9 @@ const income = computed(() => {
     return transactions.value
         .filter((transaction) => transaction.amount > 0)
         .reduce((accumulator, transaction) => {
-            return accumulator + transaction.amount;
+            return accumulator + transaction.amount
         }, 0)
-        .toFixed(2);
+        .toFixed(2)
 });
 
 // 計算歷史支出
@@ -68,7 +68,7 @@ const expenses = computed(() => {
     return transactions.value
         .filter((transaction) => transaction.amount < 0)
         .reduce((accumulator, transaction) => {
-            return accumulator + transaction.amount;
+            return accumulator + transaction.amount
         }, 0)
         .toFixed(2);
 });
@@ -79,28 +79,28 @@ const handleTransactionSubmitted = (transactionData) => {
         id: generateUniqueId(),
         text: transactionData.text,
         amount: transactionData.amount,
-    });
-    savaTransactionsToLocalStorage();
-    toast.success("添加成功");
+    })
+    savaTransactionsToLocalStorage()
+    toast.success("添加成功")
 };
 
 // 生成交易記錄的唯一Id
 const generateUniqueId = () => {
-    return generateUuid;
+    return generateUuid
 };
 
 // 刪除交易記錄
 const handleTransactionDeleted = (transactionId) => {
     transactions.value = transactions.value.filter((transaction) => {
-        return transaction.id !== transactionId;
-    });
-    savaTransactionsToLocalStorage();
-    toast.success("刪除成功");
+        return transaction.id !== transactionId
+    })
+    savaTransactionsToLocalStorage()
+    toast.success("刪除成功")
 };
 
 // Sava to local storage
 const savaTransactionsToLocalStorage = () => {
-    localStorage.setItem("transactions", JSON.stringify(transactions.value));
+    localStorage.setItem("transactions", JSON.stringify(transactions.value))
 };
 </script>
 

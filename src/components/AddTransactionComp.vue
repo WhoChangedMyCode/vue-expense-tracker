@@ -1,29 +1,29 @@
 <script setup>
-import { ref } from "vue";
+import { ref } from "vue"
 // 導入通知庫
-import { useToast } from "vue-toastification";
+import { useToast } from "vue-toastification"
 
-const text = ref("");
-const amount = ref("");
-const emit = defineEmits(["transactionSubmitted"]);
+const text = ref("")
+const amount = ref("")
+const emit = defineEmits(["transactionSubmitted"])
 
 // 初始化useToast
-const toast = useToast();
+const toast = useToast()
 
 const onSubmit = () => {
     if (!text.value) {
-        toast.warning("請輸入交易描述");
+        toast.warning("請輸入交易描述")
     } else if (!amount.value) {
-        toast.warning("請輸入交易金額");
+        toast.warning("請輸入交易金額")
     } else {
         const transactionData = {
             text: text.value,
             amount: parseFloat(amount.value),
         };
-        emit("transactionSubmitted", transactionData);
+        emit("transactionSubmitted", transactionData)
         // 清空輸入框
-        text.value = "";
-        amount.value = "";
+        text.value = ""
+        amount.value = ""
     }
 };
 </script>

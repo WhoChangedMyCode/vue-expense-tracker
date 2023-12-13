@@ -1,16 +1,16 @@
 <script setup>
-const emit = defineEmits(["transactionDeleted"]);
+const emit = defineEmits(["transactionDeleted"])
 
 defineProps({
     transactions: {
         type: Array,
         required: true,
-    },
-});
+    }
+})
 
 const deleteTransaction = (transactionId) => {
-    emit("transactionDeleted", transactionId);
-};
+    emit("transactionDeleted", transactionId)
+}
 </script>
 
 <template>
